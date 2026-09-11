@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "AI Chat Smooth - GPT/DeepSeek 防卡顿优化",
+  "version": "1.0.0",
+  "description": "优化 GPT / DeepSeek 等 AI 网页端流式回复时的页面卡顿：节流平滑滚动、隔离消息布局、禁用多余动画。",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://www.deepseek.com/*",
+        "https://chat.deepseek.com/*",
+        "https://poem.chat/*",
+        "https://www.poem.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI Chat Smooth 设置"
+  }
+}

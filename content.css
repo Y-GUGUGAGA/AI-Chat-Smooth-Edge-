@@ -1,0 +1,71 @@
+/* ===== AI Chat Smooth 性能优化样式 ===== */
+
+/* 1. 禁用动画与过渡（流式输出期间最大的隐藏开销之一） */
+html.sc-noanim,
+html.sc-noanim * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* 关闭页面级 smooth scroll（GPT/DeepSeek 自动跟随滚动大量使用） */
+html.sc-on,
+html.sc-on body {
+  scroll-behavior: auto !important;
+}
+
+/* 2. 消息布局隔离：
+   contain: layout style 让每条消息内部的流式文本变化
+   只在本消息内重排，不再触发整页 reflow。
+   用 [class*="message"] / [class*="chat"] 等模糊匹配以兼容两个站点的类名。 */
+html.sc-contain [class*="message"],
+html.sc-contain [class*="Message"] {
+  contain: layout style;
+}
+
+/* 3. 悬浮开关按钮 */
+#sc-toggle-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #10a37f;
+  color: #fff;
+  font-size: 20px;
+  line-height: 46px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  z-index: 2147483647;
+}
+
+#sc-toggle-btn:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+#sc-toggle-btn.sc-off {
+  background: #9ca3af;
+}
+
+#sc-toggle-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* 4. 提示气泡 */
+#sc-tip {
+  position: fixed;
+  display: none;
+  background: rgba(17, 24, 39, 0.92);
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2147483647;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      width: 280px;
+      margin: 0;
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      font-size: 13px;
+      background: #fff;
+      color: #111827;
+    }
+    h3 {
+      margin: 0;
+      padding: 10px 14px;
+      font-size: 14px;
+      background: #10a37f;
+      color: #fff;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 14px;
+      border-bottom: 1px solid #f3f4f6;
+      cursor: pointer;
+    }
+    .row:hover { background: #f9fafb; }
+    .row input { cursor: pointer; }
+    .footer {
+      padding: 8px 14px 12px;
+      color: #6b7280;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .ms-val { color: #10a37f; font-weight: 600; }
+    input[type="range"] { width: 130px; }
+  </style>
+</head>
+<body>
+  <h3>⚡ AI Chat Smooth</h3>
+  <label class="row"><span>自动开启优化（推荐）</span><input type="checkbox" id="scEnabled" /></label>
+  <label class="row"><span>节流平滑滚动</span><input type="checkbox" id="scThrottleScroll" /></label>
+  <label class="row"><span>禁用 CSS 动画/过渡</span><input type="checkbox" id="scNoAnim" /></label>
+  <label class="row"><span>消息布局隔离（contain）</span><input type="checkbox" id="scContain" /></label>
+  <div class="row">
+    <span>滚动节流间隔</span>
+    <span style="display:flex;align-items:center;gap:6px;">
+      <input type="range" id="scThrottleMs" min="50" max="500" step="50" />
+      <span class="ms-val" id="msVal">200ms</span>
+    </span>
+  </div>
+  <div class="footer">
+    提示：网页右下角的悬浮按钮可随时手动开关，按住可拖动位置。
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
