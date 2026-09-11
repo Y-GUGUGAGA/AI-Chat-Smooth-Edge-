@@ -1,4 +1,4 @@
-# AI Chat Smooth — Edge 防卡顿插件
+# AI Chat Smooth — Edge 防卡顿插件（测试中）
 
 针对 **GPT (chatgpt.com)** 和 **DeepSeek (chat.deepseek.com / deepseek.com)** 网页端在模型流式回答时页面严重卡顿的问题。
 
